@@ -1,0 +1,5 @@
+# Ignore .env
+.env
+account_service.log
+client_controller.log
+client_service.log

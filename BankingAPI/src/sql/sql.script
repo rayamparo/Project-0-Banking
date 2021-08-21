@@ -1,0 +1,22 @@
+create table clients(
+	client_id bigserial not null,
+	client_name varchar(20) not null,
+	primary key (client_id)
+)
+
+create table accounts(
+	owner_id bigserial references clients(client_id),
+	account_id bigserial not null,
+	account_category varchar(20) not null,
+	account_amount money not null,
+	account_number varchar(20) not null
+);
+
+insert into accounts values(1, default, 'Savings', 1000.00, '888888888888');
+insert into accounts values(1, default, 'Checkings', 524.77, '1234567891011');
+insert into accounts values(4, default, 'Checkings', 777.77, '777777777777');
+insert into accounts values(1, default, 'Checkings', 3542.13, '333333333333');
+
+-- Had to add primary key since I did not do it originally for accounts table
+alter table accounts
+add primary key (account_id);
